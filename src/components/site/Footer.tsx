@@ -1,36 +1,60 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
-import { nav, site } from "@/lib/siteContent";
+import { Linkedin } from "lucide-react";
+import { company, site } from "@/lib/siteContent";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/70 py-12">
+    <footer className="border-t border-border/70 py-14">
       <div className="container-page">
-        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-          <div className="font-display text-lg font-extrabold">
-            <span
-              className="mr-2 inline-grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground align-middle"
-              style={{ transform: "rotate(-12deg)" }}
-              aria-hidden
-            >
-              <span style={{ transform: "rotate(12deg)" }}>G</span>
-            </span>
-            eek<span className="text-primary">Rabit</span>
+        <div className="grid gap-10 font-mono text-[11px] leading-relaxed text-muted-foreground md:grid-cols-4">
+          {/* Company */}
+          <div>
+            <div className="mb-3 text-[10px] uppercase tracking-[0.18em] text-foreground/80">
+              {company.legalName.toUpperCase()}
+            </div>
+            <div>CIN: {company.cin}</div>
+            <div>GSTIN: {company.gstin}</div>
+            <div>Incorporated: {company.incorporated}</div>
           </div>
-          <nav className="flex gap-7 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            {nav.filter((n) => n.label !== "Services").map((n) => (
-              <a key={n.href} href={n.href} className="hover:text-foreground">
-                {n.label}
-              </a>
+
+          {/* Offices */}
+          {company.offices.map((o) => (
+            <div key={o.city}>
+              <div className="mb-3 text-[10px] uppercase tracking-[0.18em] text-foreground/80">
+                {o.city}
+              </div>
+              {o.lines.map((l) => (
+                <div key={l}>{l}</div>
+              ))}
+            </div>
+          ))}
+
+          {/* Reach */}
+          <div>
+            <div className="mb-3 text-[10px] uppercase tracking-[0.18em] text-foreground/80">
+              REACH US
+            </div>
+            {company.emails.map((e) => (
+              <div key={e.label}>
+                <a href={e.href} className="hover:text-primary">
+                  {e.label}
+                </a>
+              </div>
             ))}
-          </nav>
-          <div className="flex items-center gap-4 text-muted-foreground">
-            <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-primary"><Linkedin size={18} /></a>
-            <a href={site.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-primary"><Github size={18} /></a>
-            <a href={site.twitter} target="_blank" rel="noreferrer" aria-label="X / Twitter" className="hover:text-primary"><Twitter size={18} /></a>
+            <div>{company.phone}</div>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="mt-3 inline-flex items-center gap-2 hover:text-primary"
+            >
+              <Linkedin size={14} /> LinkedIn
+            </a>
           </div>
         </div>
-        <div className="mt-8 border-t border-border/60 pt-6 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-          © 2026 {site.brand} Private Limited · Made by humans, augmented by Claude · {site.location}
+
+        <div className="mt-12 border-t border-border/50 pt-6 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground/60">
+          © 2026 {company.legalName} · Made by humans, augmented by Claude · Bengaluru · Pune · Bhopal · Remote.
         </div>
       </div>
     </footer>
