@@ -17,28 +17,29 @@ export function Services() {
 
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <motion.article
+            <motion.a
               key={s.title}
+              href={`mailto:info@geekrabit.com?subject=${encodeURIComponent(s.subject)}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10% 0px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group glass hover-glow relative overflow-hidden rounded-2xl p-6"
+              className="group glass hover-glow relative block overflow-hidden rounded-2xl p-6"
             >
               <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-surface-elevated text-2xl">
                 {s.icon}
               </div>
               <h3 className="font-display text-xl font-bold">{s.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-              <div className="mt-6 flex items-center font-mono text-xs text-primary opacity-0 transition-all duration-300 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0">
-                Learn more →
+              <div className="mt-6 flex items-center font-mono text-xs text-primary transition-transform duration-300 group-hover:translate-x-1">
+                Learn more <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 30%, transparent), transparent 70%)" }}
+                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 40%, transparent), transparent 70%)" }}
               />
-            </motion.article>
+            </motion.a>
           ))}
         </div>
       </div>
