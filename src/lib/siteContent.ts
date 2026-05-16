@@ -5,7 +5,7 @@ export const site = {
   sub: "WhatsApp NLP. Voice agents. Vision AI. Native mobile. Microservices. We ship production AI for the world's hardest markets — multilingual, low-bandwidth, real-money. From idea to live in 6 weeks.",
   location: "Bengaluru + Remote",
   email: "info@geekrabit.com",
-  calendly: "https://cal.com/abhash-geekrabit",
+  calendly: "https://cal.com/abhash",
   linkedin: "https://www.linkedin.com/company/geekrabit",
   github: "https://github.com/geekrabit",
   twitter: "https://x.com/geekrabit",
