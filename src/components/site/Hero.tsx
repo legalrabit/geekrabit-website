@@ -74,7 +74,7 @@ export function Hero() {
               className="absolute -inset-10 -z-10 rounded-full opacity-70 blur-3xl"
               style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 35%, transparent), transparent 60%)" }}
             />
-            <PhoneMockup />
+            <WhatsAppMockup />
           </motion.div>
         </div>
       </div>
