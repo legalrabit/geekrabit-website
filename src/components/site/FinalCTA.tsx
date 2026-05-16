@@ -16,16 +16,18 @@ export function FinalCTA() {
         </h2>
         <div className="mt-12 flex flex-col items-center justify-center gap-5">
           <a
-            href={`mailto:${site.email}?subject=Start%20a%20project`}
+            href={site.calendly}
+            target="_blank"
+            rel="noreferrer"
             className="pill pill-primary animate-breathe text-base"
           >
-            Start a project →
+            Book a 30-min call →
           </a>
           <a
-            href={`mailto:${site.email}?subject=Just%20saying%20hi`}
+            href={`mailto:${site.email}`}
             className="font-mono text-sm text-muted-foreground hover:text-primary"
           >
-            Or just say hi →
+            Or email us →
           </a>
         </div>
       </div>

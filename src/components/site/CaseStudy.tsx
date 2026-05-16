@@ -1,5 +1,20 @@
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { caseStudy } from "@/lib/siteContent";
+
+function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-20% 0px" });
+  const mv = useMotionValue(0);
+  const text = useTransform(mv, (v) => `${Math.round(v)}${suffix}`);
+  useEffect(() => {
+    if (inView) {
+      const c = animate(mv, to, { duration: 1.4, ease: "easeOut" });
+      return c.stop;
+    }
+  }, [inView, mv, to]);
+  return <motion.span ref={ref}>{text}</motion.span>;
+}
 
 /** Stacked screenshot mockups — pure CSS, slow rotation, snap on hover. */
 function ScreenStack() {
@@ -144,7 +159,9 @@ export function CaseStudy() {
             <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
               {caseStudy.stats.map((s) => (
                 <div key={s.label} className="glass rounded-xl p-4">
-                  <div className="font-display text-2xl font-bold text-primary">{s.value}</div>
+                  <div className="font-display text-2xl font-bold text-primary">
+                    <StatCountUp to={s.value} suffix={s.suffix ?? ""} />
+                  </div>
                   <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     {s.label}
                   </div>
