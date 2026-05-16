@@ -17,25 +17,10 @@ import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { CustomCursor } from "@/components/site/CustomCursor";
 
+// Home route inherits all SEO meta + Organization JSON-LD from __root.tsx.
+// No page-specific overrides needed — root's defaults are the homepage's
+// canonical SEO surface.
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "GeekRabit — AI features that actually run in production" },
-      {
-        name: "description",
-        content:
-          "AI-first product engineering studio. WhatsApp NLP, voice agents, vision AI, native mobile, microservices. From idea to live in 6 weeks. Bengaluru + Remote.",
-      },
-      { property: "og:title", content: "GeekRabit — AI features that actually run in production" },
-      {
-        property: "og:description",
-        content:
-          "WhatsApp NLP. Voice agents. Vision AI. Native mobile. Microservices. From idea to live in 6 weeks.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
   component: Index,
 });
 
