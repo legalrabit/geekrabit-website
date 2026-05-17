@@ -1,18 +1,26 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { caseStudy } from "@/lib/siteContent";
 
 function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
-  const mv = useMotionValue(0);
+  const finalText = `${to}${suffix}`;
+  // Start at `to` so SSR and link-preview crawlers see the real number, not 0.
+  const mv = useMotionValue(to);
   const text = useTransform(mv, (v) => `${Math.round(v)}${suffix}`);
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    if (inView) {
+    setMounted(true);
+    mv.set(0);
+  }, [mv]);
+  useEffect(() => {
+    if (mounted && inView) {
       const c = animate(mv, to, { duration: 1.4, ease: "easeOut" });
       return c.stop;
     }
-  }, [inView, mv, to]);
+  }, [mounted, inView, mv, to]);
+  if (!mounted) return <span ref={ref}>{finalText}</span>;
   return <motion.span ref={ref}>{text}</motion.span>;
 }
 

@@ -1,18 +1,26 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trustFacts } from "@/lib/siteContent";
 
 function CountUp({ to, prefix = "", suffix = "", decimals = 0 }: { to: number; prefix?: string; suffix?: string; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
-  const mv = useMotionValue(0);
+  const finalText = `${prefix}${to.toFixed(decimals)}${suffix}`;
+  // Start at `to` so SSR and link-preview crawlers see the real number, not 0.
+  const mv = useMotionValue(to);
   const rounded = useTransform(mv, (v) => `${prefix}${v.toFixed(decimals)}${suffix}`);
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    if (inView) {
+    setMounted(true);
+    mv.set(0);
+  }, [mv]);
+  useEffect(() => {
+    if (mounted && inView) {
       const controls = animate(mv, to, { duration: 1.4, ease: "easeOut" });
       return controls.stop;
     }
-  }, [inView, mv, to]);
+  }, [mounted, inView, mv, to]);
+  if (!mounted) return <span ref={ref}>{finalText}</span>;
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 

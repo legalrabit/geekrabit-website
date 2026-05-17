@@ -3,7 +3,7 @@ export const site = {
   brand: "GeekRabit",
   tagline: "We ship AI features that actually run in production.",
   sub: "WhatsApp NLP. Voice agents. Vision AI. Native mobile. Microservices. We ship production AI for the world's hardest markets — multilingual, low-bandwidth, real-money. From idea to live in 6 weeks.",
-  location: "Bengaluru + Remote",
+  location: "Pune + Remote",
   email: "info@geekrabit.com",
   calendly: "https://cal.com/abhash",
   linkedin: "https://www.linkedin.com/company/geekrabit",
