@@ -71,7 +71,9 @@ const SITE_URL = "https://geekrabit.com";
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 const SITE_TITLE = "GeekRabit — AI features that actually run in production";
 const SITE_DESC =
-  "AI-first product engineering studio. WhatsApp NLP, voice agents, vision AI, native mobile, microservices. From idea to live in 6 weeks. Bengaluru + Remote.";
+  "AI-first product engineering studio. We ship WhatsApp NLP, voice agents, vision AI, and native mobile in 6 weeks. From idea to production.";
+const TWITTER_HANDLE = "@geekrabit";
+const BRAND_COLOR = "#FF6B35";
 
 const ORG_JSON_LD = {
   "@context": "https://schema.org",
@@ -123,19 +125,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: SITE_DESC },
       { name: "author", content: "GeekRabit Private Limited" },
       { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: BRAND_COLOR },
       // Open Graph
       { property: "og:title", content: SITE_TITLE },
       { property: "og:description", content: SITE_DESC },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
       { property: "og:site_name", content: "GeekRabit" },
-      { property: "og:locale", content: "en_IN" },
+      { property: "og:locale", content: "en_US" },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "GeekRabit — We ship AI features that actually run." },
       // Twitter / X
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: TWITTER_HANDLE },
+      { name: "twitter:creator", content: TWITTER_HANDLE },
       { name: "twitter:title", content: SITE_TITLE },
       { name: "twitter:description", content: SITE_DESC },
       { name: "twitter:image", content: OG_IMAGE },

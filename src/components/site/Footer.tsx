@@ -54,7 +54,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border/50 pt-6 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground/60">
-          © 2026 {company.legalName} · Made by humans, augmented by Claude · Bengaluru · Pune · Bhopal · Remote.
+          © 2026 {company.legalName} · Made by humans, augmented by Claude · Pune · Bhopal · Remote.
         </div>
       </div>
     </footer>
