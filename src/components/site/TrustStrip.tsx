@@ -6,19 +6,25 @@ function CountUp({ to, prefix = "", suffix = "", decimals = 0 }: { to: number; p
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
   const finalText = `${prefix}${to.toFixed(decimals)}${suffix}`;
-  // Start at `to` so SSR and link-preview crawlers see the real number, not 0.
+  // motion value starts at the final value so SSR + first-paint hydration
+  // show the real number, and the value stays correct if `inView` never
+  // fires (user scrolled past before observer attached, reduced-motion
+  // blocked it, etc.). Count-up only starts when `inView` actually
+  // triggers — and the reset-to-zero happens *inside* that same effect
+  // so there's no window where the value can be visibly 0 without an
+  // animation queued. Earlier code reset on mount, which left the stats
+  // stuck at 0 when inView's once:true had already fired or hadn't yet.
   const mv = useMotionValue(to);
   const rounded = useTransform(mv, (v) => `${prefix}${v.toFixed(decimals)}${suffix}`);
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
-    mv.set(0);
-  }, [mv]);
+  }, []);
   useEffect(() => {
-    if (mounted && inView) {
-      const controls = animate(mv, to, { duration: 1.4, ease: "easeOut" });
-      return controls.stop;
-    }
+    if (!mounted || !inView) return;
+    mv.set(0);
+    const controls = animate(mv, to, { duration: 1.4, ease: "easeOut" });
+    return controls.stop;
   }, [mounted, inView, mv, to]);
   if (!mounted) return <span ref={ref}>{finalText}</span>;
   return <motion.span ref={ref}>{rounded}</motion.span>;

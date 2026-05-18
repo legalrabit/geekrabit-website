@@ -6,19 +6,25 @@ function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
   const finalText = `${to}${suffix}`;
-  // Start at `to` so SSR and link-preview crawlers see the real number, not 0.
+  // motion value starts at the final value so:
+  //  - SSR + first-paint hydration show the real number (link previews,
+  //    no-JS crawlers, users on slow devices all see "12" not "0")
+  //  - if `inView` never fires (user scrolled past, prefers-reduced-motion
+  //    blocked observer, etc.), the value stays correct — no broken UI
+  // The count-up animation kicks in only when `inView` actually triggers,
+  // and the reset-to-zero happens *inside* that same effect so there's no
+  // window where the value can be visibly 0 without an animation queued.
   const mv = useMotionValue(to);
   const text = useTransform(mv, (v) => `${Math.round(v)}${suffix}`);
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
-    mv.set(0);
-  }, [mv]);
+  }, []);
   useEffect(() => {
-    if (mounted && inView) {
-      const c = animate(mv, to, { duration: 1.4, ease: "easeOut" });
-      return c.stop;
-    }
+    if (!mounted || !inView) return;
+    mv.set(0);
+    const c = animate(mv, to, { duration: 1.4, ease: "easeOut" });
+    return c.stop;
   }, [mounted, inView, mv, to]);
   if (!mounted) return <span ref={ref}>{finalText}</span>;
   return <motion.span ref={ref}>{text}</motion.span>;
