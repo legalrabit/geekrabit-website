@@ -182,12 +182,19 @@ export function CaseStudy() {
                 </div>
               ))}
             </div>
-            <a
-              href="#contact"
-              className="mt-10 inline-flex items-center font-mono text-sm text-primary transition-transform hover:translate-x-1"
-            >
-              Read the full breakdown →
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              {caseStudy.links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pill pill-ghost"
+                >
+                  {l.label} →
+                </a>
+              ))}
+            </div>
           </div>
           <div className="relative">
             <ScreenStack />
