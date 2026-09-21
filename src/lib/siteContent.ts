@@ -88,6 +88,10 @@ export const caseStudy = {
     { value: 4, label: "user surfaces" },
     { value: 48, label: "NLP eval cases" },
   ],
+  links: [
+    { label: "thiya.in", href: "https://thiya.in" },
+    { label: "Thiya on LinkedIn", href: "https://www.linkedin.com/company/thiya" },
+  ],
 };
 
 export const process = [
