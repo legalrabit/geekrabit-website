@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { services } from "@/lib/siteContent";
+import { BookOpenText, ClipboardCheck, Cog, MessageSquareText, ShieldCheck, Smartphone } from "lucide-react";
+
+const ICONS = { BookOpenText, ClipboardCheck, Cog, MessageSquareText, ShieldCheck, Smartphone } as const;
 
 export function Services() {
   return (
@@ -26,8 +29,8 @@ export function Services() {
               transition={{ duration: 0.5, delay: i * 0.06 }}
               className="group glass hover-glow relative block overflow-hidden rounded-2xl p-6"
             >
-              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-surface-elevated text-2xl">
-                {s.icon}
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary">
+                {(() => { const Icon = ICONS[s.icon as keyof typeof ICONS]; return <Icon size={20} strokeWidth={1.75} />; })()}
               </div>
               <h3 className="font-display text-xl font-bold">{s.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>

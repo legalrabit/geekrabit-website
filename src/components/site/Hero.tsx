@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { site } from "@/lib/siteContent";
-import { WhatsAppMockup } from "./WhatsAppMockup";
+import { BedrockFlow } from "./BedrockFlow";
 
 export function Hero() {
   return (
@@ -74,7 +74,7 @@ export function Hero() {
               className="absolute -inset-10 -z-10 rounded-full opacity-70 blur-3xl"
               style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 35%, transparent), transparent 60%)" }}
             />
-            <WhatsAppMockup />
+            <BedrockFlow />
           </motion.div>
         </div>
       </div>
