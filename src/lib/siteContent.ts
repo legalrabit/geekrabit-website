@@ -37,37 +37,37 @@ export const marketsBar = [
 
 export const services = [
   {
-    icon: "📚",
+    icon: "BookOpenText",
     title: "Enterprise RAG on AWS Bedrock",
     body: "Retrieval-augmented generation over your documents using Amazon Bedrock Knowledge Bases. Chunking, retrieval and reranking chosen from measured results on a test set, not defaults.",
     subject: "Tell me about Enterprise RAG on AWS Bedrock",
   },
   {
-    icon: "⚙️",
+    icon: "Cog",
     title: "LLM features inside Spring Boot",
     body: "Add Bedrock, Claude or GPT capabilities to the Java services you already run. No rewrite, no second platform. Spring AI or LangChain4j, wired into your auth, data and deployment.",
     subject: "Tell me about LLM features inside Spring Boot",
   },
   {
-    icon: "🛡️",
+    icon: "ShieldCheck",
     title: "Production readiness for AI",
     body: "Guardrails, evaluation pipelines, observability, prompt caching and cost per request. The layer that turns a pilot into a service your team can run and your finance team can forecast.",
     subject: "Tell me about production readiness for AI features",
   },
   {
-    icon: "💬",
+    icon: "MessageSquareText",
     title: "Conversational workflows",
     body: "WhatsApp and chat automation with multilingual intent extraction, confirmation loops and human-in-the-loop fallbacks. Proven on mixed Hindi and English messages in Thiya.",
     subject: "Tell me about conversational workflows",
   },
   {
-    icon: "📱",
+    icon: "Smartphone",
     title: "End-to-end product delivery",
     body: "When you need the whole thing built: Spring Boot backend, React web app, Flutter mobile app for iOS and Android, PostgreSQL and AWS infrastructure, from one senior engineer.",
     subject: "Tell me about end-to-end product delivery",
   },
   {
-    icon: "📊",
+    icon: "ClipboardCheck",
     title: "GenAI architecture review",
     body: "A one-week audit of a stalled pilot: model and provider choice, RAG versus fine-tuning, token economics, security review and a written plan to production.",
     subject: "Tell me about a GenAI architecture review",

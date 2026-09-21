@@ -1,6 +1,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { caseStudy } from "@/lib/siteContent";
+import { WhatsAppMockup } from "./WhatsAppMockup";
 
 function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -36,17 +37,16 @@ function ScreenStack() {
     <div className="relative mx-auto h-[520px] w-full max-w-[520px] [perspective:1400px] group">
       {/* WhatsApp screenshot */}
       <MockCard
-        className="absolute right-0 top-0 h-[320px] w-[210px]"
+        className="absolute right-0 top-0 h-[340px] w-[210px]"
         rot="rotate-y-[-14deg] rotate-x-[6deg] rotate-z-[6deg]"
         delay={0.1}
-        title="WhatsApp"
+        title="WhatsApp · live intent demo"
       >
-        <div className="space-y-2 p-3">
-          <div className="h-3 w-2/3 rounded bg-surface-elevated" />
-          <div className="ml-auto h-8 w-3/4 rounded-lg bg-primary/80" />
-          <div className="h-10 w-4/5 rounded-lg bg-surface-elevated" />
-          <div className="ml-auto h-6 w-1/2 rounded-lg bg-primary/70" />
-          <div className="h-12 w-full rounded-lg border border-primary/40 bg-primary/10" />
+        {/* the real animated phone, scaled to fit the card */}
+        <div className="relative h-[310px] overflow-hidden">
+          <div className="absolute left-1/2 top-1 w-[360px] origin-top -translate-x-1/2" style={{ transform: "translateX(-50%) scale(0.41)" }}>
+            <WhatsAppMockup />
+          </div>
         </div>
       </MockCard>
 
