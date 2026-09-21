@@ -69,9 +69,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 const SITE_URL = "https://geekrabit.com";
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
-const SITE_TITLE = "GeekRabit — AI features that actually run in production";
+const SITE_TITLE = "GeekRabit — GenAI on Java, Spring Boot and AWS Bedrock, in production";
 const SITE_DESC =
-  "AI-first product engineering studio. We ship WhatsApp NLP, voice agents, vision AI, and native mobile in 6 weeks. From idea to production.";
+  "Applied-AI engineering studio. We take GenAI features from pilot to production on Java, Spring Boot and AWS Bedrock: RAG, guardrails, evaluation, cost control. For product teams and agencies.";
 const TWITTER_HANDLE = "@geekrabit";
 const BRAND_COLOR = "#FF6B35";
 
@@ -136,7 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "GeekRabit — We ship AI features that actually run." },
+      { property: "og:image:alt", content: "GeekRabit — GenAI on Java, Spring Boot and AWS Bedrock, in production." },
       // Twitter / X
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: TWITTER_HANDLE },

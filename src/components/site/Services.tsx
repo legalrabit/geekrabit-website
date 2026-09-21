@@ -11,7 +11,7 @@ export function Services() {
             What we build.
           </h2>
           <p className="mt-4 max-w-prose text-muted-foreground md:text-lg">
-            Six things we do better than anyone else in our weight class. Pick one, or stack them.
+            Six things we do well, all of them in production. Pick one, or stack them.
           </p>
         </div>
 
