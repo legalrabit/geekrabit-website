@@ -78,20 +78,23 @@ function ScreenStack() {
 
       {/* Vendor mobile dashboard */}
       <MockCard
-        className="absolute bottom-0 left-12 h-[300px] w-[180px] rounded-[1.5rem]"
+        className="absolute bottom-0 left-12 h-[340px] w-[180px] rounded-[1.5rem]"
         rot="rotate-y-[-6deg] rotate-x-[-2deg] rotate-z-[4deg]"
         delay={0.4}
-        title="Vendor App"
+        title="Vendor App · onboarding"
       >
-        <div className="space-y-2 p-3">
-          <div className="h-16 rounded-lg bg-gradient-to-br from-primary/70 to-primary/30" />
-          <div className="grid grid-cols-2 gap-2">
-            <div className="h-14 rounded-md bg-surface-elevated" />
-            <div className="h-14 rounded-md bg-surface-elevated" />
-          </div>
-          <div className="h-10 rounded-md bg-surface-elevated" />
-          <div className="h-10 rounded-md bg-surface-elevated" />
-        </div>
+        {/* real screen recording of Thiya's vendor onboarding, muted loop */}
+        <video
+          src="/thiya-onboarding.mp4"
+          poster="/thiya-onboarding-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Thiya vendor app onboarding, screen recording"
+          className="h-[310px] w-full object-cover object-top"
+        />
       </MockCard>
     </div>
   );
