@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
-import { MarketsBar } from "@/components/site/MarketsBar";
 import { TrustStrip } from "@/components/site/TrustStrip";
 import { Services } from "@/components/site/Services";
 import { CaseStudy } from "@/components/site/CaseStudy";
@@ -31,7 +30,6 @@ function Index() {
       <CustomCursor />
       <Navbar />
       <Hero />
-      <MarketsBar />
       <TrustStrip />
       <Services />
       <CaseStudy />

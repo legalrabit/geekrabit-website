@@ -6,20 +6,10 @@ function CountUp({ to, prefix = "", suffix = "", decimals = 0 }: { to: number; p
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
   const finalText = `${prefix}${to.toFixed(decimals)}${suffix}`;
-  // motion value starts at the final value so SSR + first-paint hydration
-  // show the real number, and the value stays correct if `inView` never
-  // fires (user scrolled past before observer attached, reduced-motion
-  // blocked it, etc.). Count-up only starts when `inView` actually
-  // triggers — and the reset-to-zero happens *inside* that same effect
-  // so there's no window where the value can be visibly 0 without an
-  // animation queued. Earlier code reset on mount, which left the stats
-  // stuck at 0 when inView's once:true had already fired or hadn't yet.
   const mv = useMotionValue(to);
   const rounded = useTransform(mv, (v) => `${prefix}${v.toFixed(decimals)}${suffix}`);
   const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
   useEffect(() => {
     if (!mounted || !inView) return;
     mv.set(0);
@@ -30,27 +20,36 @@ function CountUp({ to, prefix = "", suffix = "", decimals = 0 }: { to: number; p
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
+/** Credentials band: four proof tiles directly under the hero. Numbers, not adjectives. */
 export function TrustStrip() {
   return (
-    <section aria-label="Stats" className="border-y border-border/70 bg-surface/40 py-6 mt-20 md:mt-28">
+    <section aria-label="Credentials" className="relative pt-14 pb-4 md:pt-20">
       <div className="container-page">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-xs md:text-sm">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {trustFacts.map((f, i) => (
-            <div key={i} className="flex items-center gap-8">
-              <span className="text-muted-foreground">
-                {"text" in f ? (
-                  <span className="text-foreground">{f.text}</span>
-                ) : (
-                  <>
-                    <span className="text-foreground">
-                      <CountUp to={f.value} prefix={f.prefix ?? ""} suffix={f.suffix ?? ""} decimals={f.decimals ?? 0} />
-                    </span>{" "}
-                    {f.label}
-                  </>
-                )}
-              </span>
-              {i < trustFacts.length - 1 && <span className="text-border-strong">·</span>}
-            </div>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10% 0px" }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              className="glass hover-glow flex min-h-[148px] flex-col justify-between rounded-2xl p-5"
+            >
+              {"kind" in f ? (
+                <div className="flex items-center gap-3">
+                  <img src="/badges/genai-dev-pro.png" alt="AWS Certified Generative AI Developer – Professional" width={64} height={64} className="h-16 w-16" loading="lazy" />
+                  <img src="/badges/sa-associate.png" alt="AWS Certified Solutions Architect – Associate" width={64} height={64} className="h-16 w-16" loading="lazy" />
+                </div>
+              ) : (
+                <div className="flex items-baseline gap-2">
+                  <span className="font-display text-4xl font-bold leading-none text-foreground md:text-5xl">
+                    <CountUp to={f.value} prefix={f.prefix ?? ""} suffix={f.suffix ?? ""} decimals={f.decimals ?? 0} />
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-primary">{f.unit}</span>
+                </div>
+              )}
+              <p className="mt-4 text-[12.5px] leading-snug text-muted-foreground">{f.label}</p>
+            </motion.div>
           ))}
         </div>
       </div>

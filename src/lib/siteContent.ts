@@ -20,11 +20,10 @@ export const nav = [
 ];
 
 export const trustFacts = [
-  { value: 12, suffix: "+", label: "years building for banks, payments and trading" },
-  { value: 2, label: "AWS certifications: GenAI Developer Pro · Solutions Architect" },
-  { value: 0.05, prefix: "~₹", decimals: 2, label: "/ AI message measured with prompt caching" },
-  { text: "Amazon Bedrock · Claude · GPT" },
-  { text: "Java · Spring Boot · Flutter · React" },
+  { value: 2022, unit: "established", label: "GeekRabit Private Limited, registered in India. Fixed-scope contracts, invoices in USD, GBP, EUR and INR." },
+  { kind: "badges", label: "AWS-certified engineering: Generative AI Developer – Professional and Solutions Architect – Associate." },
+  { value: 0.05, prefix: "~₹", decimals: 2, unit: "per message", label: "measured LLM cost per customer message with prompt caching, in production testing." },
+  { value: 3, unit: "time zones", label: "daily overlap with IST, CET and EST teams. Async-first, written updates, no timezone excuses." },
 ];
 
 export const marketsBar = [
@@ -63,7 +62,7 @@ export const services = [
   {
     icon: "Smartphone",
     title: "End-to-end product delivery",
-    body: "When you need the whole thing built: Spring Boot backend, React web app, Flutter mobile app for iOS and Android, PostgreSQL and AWS infrastructure, from one senior engineer.",
+    body: "When you need the whole thing built: Spring Boot backend, React web app, Flutter mobile app for iOS and Android, PostgreSQL and AWS infrastructure. Senior engineers only, no handoffs.",
     subject: "Tell me about end-to-end product delivery",
   },
   {
@@ -158,7 +157,7 @@ export const whyUs = [
   },
   {
     title: "Senior hands, no handoffs.",
-    body: "Backend, mobile, web and the AI layer from one senior engineer who has shipped in regulated environments. Zero coordination cost, zero junior surprises.",
+    body: "Backend, mobile, web and the AI layer from senior engineers who have shipped in regulated environments. Zero coordination cost, zero junior surprises.",
   },
 ];
 
