@@ -37,48 +37,23 @@ function ScreenStack() {
     <div className="relative mx-auto h-[520px] w-full max-w-[520px] [perspective:1400px] group">
       {/* WhatsApp screenshot */}
       <MockCard
-        className="absolute right-0 top-0 h-[340px] w-[210px]"
+        className="absolute right-0 top-4 h-[400px] w-[236px]"
         rot="rotate-y-[-14deg] rotate-x-[6deg] rotate-z-[6deg]"
         delay={0.1}
         title="WhatsApp · live intent demo"
       >
         {/* the real animated phone, scaled to fit the card */}
-        <div className="relative h-[310px] overflow-hidden">
-          <div className="absolute left-1/2 top-1 w-[360px] origin-top -translate-x-1/2" style={{ transform: "translateX(-50%) scale(0.41)" }}>
+        <div className="relative h-[370px] overflow-hidden">
+          <div className="absolute left-1/2 top-1 w-[360px] origin-top -translate-x-1/2" style={{ transform: "translateX(-50%) scale(0.49)" }}>
             <WhatsAppMockup />
           </div>
         </div>
       </MockCard>
 
-      {/* Admin portal */}
-      <MockCard
-        className="absolute left-0 top-12 h-[280px] w-[360px]"
-        rot="rotate-y-[10deg] rotate-x-[4deg] rotate-z-[-3deg]"
-        delay={0.25}
-        title="Admin Portal"
-      >
-        <div className="grid grid-cols-4 gap-2 p-3">
-          <div className="col-span-1 space-y-1.5">
-            <div className="h-3 rounded bg-primary/60" />
-            <div className="h-3 rounded bg-surface-elevated" />
-            <div className="h-3 rounded bg-surface-elevated" />
-            <div className="h-3 rounded bg-surface-elevated" />
-          </div>
-          <div className="col-span-3 space-y-2">
-            <div className="grid grid-cols-3 gap-2">
-              <div className="h-12 rounded bg-surface-elevated" />
-              <div className="h-12 rounded bg-surface-elevated" />
-              <div className="h-12 rounded bg-primary/30" />
-            </div>
-            <div className="h-20 rounded bg-surface-elevated/70" />
-            <div className="h-14 rounded bg-surface-elevated/70" />
-          </div>
-        </div>
-      </MockCard>
 
       {/* Vendor mobile dashboard */}
       <MockCard
-        className="absolute bottom-0 left-12 h-[340px] w-[180px] rounded-[1.5rem]"
+        className="absolute bottom-0 left-6 h-[400px] w-[212px] rounded-[1.5rem]"
         rot="rotate-y-[-6deg] rotate-x-[-2deg] rotate-z-[4deg]"
         delay={0.4}
         title="Vendor App · onboarding"
@@ -93,7 +68,7 @@ function ScreenStack() {
           playsInline
           preload="metadata"
           aria-label="Thiya vendor app onboarding, screen recording"
-          className="h-[310px] w-full object-cover object-top"
+          className="h-[370px] w-full object-cover object-top"
         />
       </MockCard>
     </div>
