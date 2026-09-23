@@ -89,7 +89,6 @@ export const caseStudy = {
   ],
   links: [
     { label: "thiya.in", href: "https://thiya.in" },
-    { label: "Thiya on LinkedIn", href: "https://www.linkedin.com/company/thiya" },
   ],
 };
 
