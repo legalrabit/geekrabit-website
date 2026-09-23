@@ -242,3 +242,8 @@
   }
   .animate-mesh { animation: mesh-shift 14s ease-in-out infinite; background-size: 120% 120%, 120% 120%; }
 }
+
+/* Case-study screen stack: tilted 3D fan on md+, flat side-by-side on phones */
+@media (min-width: 768px) {
+  .group [style*="--tilt"] { --stack-tilt: var(--tilt); }
+}
