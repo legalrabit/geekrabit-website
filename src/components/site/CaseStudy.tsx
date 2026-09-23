@@ -33,10 +33,10 @@ function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 /** Stacked screenshot mockups — pure CSS, slow rotation, snap on hover. */
 function ScreenStack() {
   return (
-    <div className="relative mx-auto h-[520px] w-full max-w-[520px] [perspective:1400px] group">
+    <div className="group relative mx-auto flex w-full max-w-[520px] items-end justify-center gap-3 md:block md:h-[520px] md:[perspective:1400px]">
       {/* WhatsApp screenshot */}
       <MockCard
-        className="absolute right-0 top-4 h-[400px] w-[236px]"
+        className="h-[340px] w-1/2 max-w-[236px] md:absolute md:right-0 md:top-4 md:h-[400px] md:w-[236px]"
         rot="rotate-y-[-14deg] rotate-x-[6deg] rotate-z-[6deg]"
         delay={0.1}
         title="WhatsApp · live intent demo"
@@ -51,14 +51,14 @@ function ScreenStack() {
           playsInline
           preload="metadata"
           aria-label="WhatsApp conversation with Thiya: customer order message, LLM confirmation, vendor acceptance and delivery updates, screen recording"
-          className="h-[370px] w-full object-cover object-top"
+          className="h-full w-full object-cover object-top"
         />
       </MockCard>
 
 
       {/* Vendor mobile dashboard */}
       <MockCard
-        className="absolute bottom-0 left-6 h-[400px] w-[212px] rounded-[1.5rem]"
+        className="h-[340px] w-1/2 max-w-[212px] rounded-[1.5rem] md:absolute md:bottom-0 md:left-6 md:h-[400px] md:w-[212px]"
         rot="rotate-y-[-6deg] rotate-x-[-2deg] rotate-z-[4deg]"
         delay={0.4}
         title="Vendor App · onboarding"
@@ -73,7 +73,7 @@ function ScreenStack() {
           playsInline
           preload="metadata"
           aria-label="Thiya vendor app onboarding, screen recording"
-          className="h-[370px] w-full object-cover object-top"
+          className="h-full w-full object-cover object-top"
         />
       </MockCard>
     </div>
@@ -106,7 +106,7 @@ function MockCard({
     >
       <div
         className={`glass h-full w-full overflow-hidden rounded-2xl shadow-[var(--shadow-card)] ${rot}`}
-        style={{ transform: rotToInline(rot) }}
+        style={{ transform: "var(--stack-tilt, none)", ["--tilt" as string]: rotToInline(rot) }}
       >
         <div className="flex items-center justify-between border-b border-border px-3 py-2">
           <div className="flex gap-1.5">
