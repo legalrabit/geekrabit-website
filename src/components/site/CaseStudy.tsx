@@ -30,104 +30,87 @@ function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   return <motion.span ref={ref}>{text}</motion.span>;
 }
 
-/** Stacked screenshot mockups — pure CSS, slow rotation, snap on hover. */
-function ScreenStack() {
-  return (
-    <div className="group relative mx-auto flex w-full max-w-[520px] items-end justify-center gap-3 md:block md:h-[520px] md:[perspective:1400px]">
-      {/* WhatsApp screenshot */}
-      <MockCard
-        className="h-[340px] w-1/2 max-w-[236px] md:absolute md:right-0 md:top-4 md:h-[400px] md:w-[236px]"
-        rot="rotate-y-[-14deg] rotate-x-[6deg] rotate-z-[6deg]"
-        delay={0.1}
-        title="WhatsApp · live intent demo"
-      >
-        {/* real iPhone recording: customer message in, LLM confirmation back */}
-        <video
-          src="/thiya-whatsapp.mp4"
-          poster="/thiya-whatsapp-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="WhatsApp conversation with Thiya: customer order message, LLM confirmation, vendor acceptance and delivery updates, screen recording"
-          className="h-full w-full object-cover object-top"
-        />
-      </MockCard>
+/** Three real screen recordings, each with a one-line caption. Rows on phones, a row of three on md+. */
+const CLIPS = [
+  {
+    src: "/thiya-whatsapp.mp4",
+    poster: "/thiya-whatsapp-poster.jpg",
+    kicker: "01 · Customer",
+    title: "The customer just types.",
+    body: "Mixed Hindi and English, no app, no forms. An LLM layer reads the intent, confirms it back, and only then touches the order.",
+    alt: "WhatsApp conversation with Thiya: customer order message, LLM confirmation, vendor acceptance and delivery updates",
+  },
+  {
+    src: "/thiya-vendor-order.mp4",
+    poster: "/thiya-vendor-order-poster.jpg",
+    kicker: "02 · Vendor",
+    title: "The vendor sees it as an order.",
+    body: "The same message lands in the vendor's app as a line in today's run: quantity, address, delivery slot, one tap to dispatch.",
+    alt: "Thiya vendor app: the WhatsApp request accepted as an order, today's run, delivery with jars and payment, marked delivered",
+  },
+  {
+    src: "/thiya-onboarding.mp4",
+    poster: "/thiya-onboarding-poster.jpg",
+    kicker: "03 · Onboarding",
+    title: "A vendor is live in five screens.",
+    body: "Profile, what you sell, shop location, delivery radius, done. Built for people who run a business from a phone, not a desk.",
+    alt: "Thiya vendor app onboarding, screen recording",
+  },
+];
 
-
-      {/* Vendor mobile dashboard */}
-      <MockCard
-        className="h-[340px] w-1/2 max-w-[212px] rounded-[1.5rem] md:absolute md:bottom-0 md:left-6 md:h-[400px] md:w-[212px]"
-        rot="rotate-y-[-6deg] rotate-x-[-2deg] rotate-z-[4deg]"
-        delay={0.4}
-        title="Vendor App · onboarding"
-      >
-        {/* real screen recording of Thiya's vendor onboarding, muted loop */}
-        <video
-          src="/thiya-onboarding.mp4"
-          poster="/thiya-onboarding-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="Thiya vendor app onboarding, screen recording"
-          className="h-full w-full object-cover object-top"
-        />
-      </MockCard>
-    </div>
-  );
-}
-
-function MockCard({
-  className,
-  rot,
-  delay,
-  title,
-  children,
-}: {
-  className?: string;
-  rot: string;
-  delay: number;
-  title: string;
-  children: React.ReactNode;
-}) {
+function ClipCard({ clip, index }: { clip: (typeof CLIPS)[number]; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay }}
-      className={`${className} group-hover:[transform:none] transition-transform duration-700 ease-out`}
-      style={{
-        transformStyle: "preserve-3d",
-      }}
+      viewport={{ once: true, margin: "-10% 0px" }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="grid grid-cols-[1fr_150px] items-center gap-4 md:block"
     >
-      <div
-        className={`glass h-full w-full overflow-hidden rounded-2xl shadow-[var(--shadow-card)] ${rot}`}
-        style={{ transform: "var(--stack-tilt, none)", ["--tilt" as string]: rotToInline(rot) }}
-      >
+      <div className="md:order-2 md:mt-4">
+        <p className="font-mono text-[10px] uppercase tracking-widest text-primary">{clip.kicker}</p>
+        <h3 className="mt-1 font-display text-lg font-bold leading-snug text-foreground">{clip.title}</h3>
+        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{clip.body}</p>
+      </div>
+      <div className="glass overflow-hidden rounded-2xl shadow-[var(--shadow-card)] md:order-1">
         <div className="flex items-center justify-between border-b border-border px-3 py-2">
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
             <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
             <span className="h-2 w-2 rounded-full bg-primary/70" />
           </div>
-          <span className="font-mono text-[10px] text-muted-foreground">{title}</span>
+          <span className="font-mono text-[10px] text-muted-foreground">{clip.kicker.split(" · ")[1]}</span>
         </div>
-        {children}
+        {"pending" in clip && clip.pending ? (
+          <div className="grid aspect-[9/17.5] w-full place-items-center bg-surface/60 px-4 text-center font-mono text-[11px] text-muted-foreground">
+            recording in progress
+          </div>
+        ) : (
+          <video
+            src={clip.src}
+            poster={clip.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={clip.alt}
+            className="aspect-[9/17.5] w-full object-cover object-top"
+          />
+        )}
       </div>
     </motion.div>
   );
 }
 
-// Map Tailwind-like arbitrary rot strings to CSS transforms (since arbitrary rotate-y not in core)
-function rotToInline(rot: string): string {
-  const parts: string[] = [];
-  const m = rot.matchAll(/rotate-([xyz])-\[(-?[\d.]+)deg\]/g);
-  for (const r of m) parts.push(`rotate${r[1].toUpperCase()}(${r[2]}deg)`);
-  return parts.join(" ");
+function ScreenStack() {
+  return (
+    <div className="grid gap-8 md:grid-cols-3 md:gap-5">
+      {CLIPS.map((clip, i) => (
+        <ClipCard key={clip.src} clip={clip} index={i} />
+      ))}
+    </div>
+  );
 }
 
 export function CaseStudy() {
@@ -142,7 +125,7 @@ export function CaseStudy() {
         }}
       />
       <div className="container-page">
-        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-14 lg:grid-cols-[1fr_1.35fr] lg:gap-16">
           <div>
             <p className="eyebrow">{caseStudy.eyebrow}</p>
             <h2 className="mt-3 text-balance font-display text-4xl font-bold leading-tight md:text-6xl">
