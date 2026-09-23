@@ -6,17 +6,15 @@ export function Founder() {
     <section className="py-24">
       <div className="container-page">
         <div className="mx-auto flex max-w-3xl flex-col items-start gap-6 md:flex-row md:items-center">
-          <div
-            className="grid h-20 w-20 shrink-0 place-items-center rounded-full font-display text-xl font-bold text-primary-foreground"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 30%, var(--primary-glow), var(--primary))",
-              boxShadow: "0 0 0 3px color-mix(in oklab, var(--primary) 25%, transparent), var(--shadow-glow)",
-            }}
-            aria-hidden
-          >
-            {founder.initials}
-          </div>
+          <img
+            src="/founder.jpg"
+            alt={founder.name}
+            width={96}
+            height={96}
+            loading="lazy"
+            className="h-24 w-24 shrink-0 rounded-full object-cover"
+            style={{ boxShadow: "0 0 0 3px color-mix(in oklab, var(--primary) 35%, transparent), var(--shadow-glow)" }}
+          />
           <div>
             <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
               {founder.name}
