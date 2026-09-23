@@ -65,9 +65,9 @@ function ClipCard({ clip, index }: { clip: (typeof CLIPS)[number]; index: number
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="grid grid-cols-[1fr_150px] items-center gap-4 md:block"
+      className="grid grid-cols-[1fr_150px] items-center gap-5 md:block"
     >
-      <div className="md:order-2 md:mt-4">
+      <div className="md:order-2 md:mt-6 md:px-1">
         <p className="font-mono text-[10px] uppercase tracking-widest text-primary">{clip.kicker}</p>
         <h3 className="mt-1 font-display text-lg font-bold leading-snug text-foreground">{clip.title}</h3>
         <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{clip.body}</p>
@@ -105,7 +105,7 @@ function ClipCard({ clip, index }: { clip: (typeof CLIPS)[number]; index: number
 
 function ScreenStack() {
   return (
-    <div className="grid gap-8 md:grid-cols-3 md:gap-5">
+    <div className="grid gap-10 md:grid-cols-3 md:gap-6">
       {CLIPS.map((clip, i) => (
         <ClipCard key={clip.src} clip={clip} index={i} />
       ))}

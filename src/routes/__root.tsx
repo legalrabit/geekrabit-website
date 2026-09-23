@@ -69,7 +69,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 const SITE_URL = "https://geekrabit.com";
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
-const SITE_TITLE = "GeekRabit — GenAI on Java, Spring Boot and AWS Bedrock, in production";
+const SITE_TITLE = "GeekRabit: GenAI on Java, Spring Boot and AWS Bedrock, in production";
 const SITE_DESC =
   "Applied-AI engineering studio. We take GenAI features from pilot to production on Java, Spring Boot and AWS Bedrock: RAG, guardrails, evaluation, cost control. For product teams and agencies.";
 const TWITTER_HANDLE = "@geekrabit";
@@ -136,7 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "GeekRabit — GenAI on Java, Spring Boot and AWS Bedrock, in production." },
+      { property: "og:image:alt", content: "GeekRabit: GenAI on Java, Spring Boot and AWS Bedrock, in production." },
       // Twitter / X
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: TWITTER_HANDLE },
