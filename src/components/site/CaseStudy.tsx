@@ -50,7 +50,7 @@ function ScreenStack() {
           loop
           playsInline
           preload="metadata"
-          aria-label="WhatsApp conversation with Thiya: a customer order message and the confirmation reply, screen recording"
+          aria-label="WhatsApp conversation with Thiya: customer order message, LLM confirmation, vendor acceptance and delivery updates, screen recording"
           className="h-[370px] w-full object-cover object-top"
         />
       </MockCard>
