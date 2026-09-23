@@ -63,7 +63,7 @@ export function Pricing() {
         </div>
 
         <p className="mt-8 text-center font-mono text-xs italic text-muted-foreground">
-          INR / AED invoicing available. We're a registered Indian Pvt Ltd — proper invoices, GST where applicable, no freelancer drama.
+          INR / AED invoicing available. We're a registered Indian Pvt Ltd. Proper invoices, GST where applicable, no freelancer drama.
         </p>
       </div>
     </section>

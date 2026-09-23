@@ -37,8 +37,8 @@ export function TrustStrip() {
             >
               {"kind" in f ? (
                 <div className="flex items-center gap-3">
-                  <img src="/badges/genai-dev-pro.png" alt="AWS Certified Generative AI Developer – Professional" width={64} height={64} className="h-16 w-16" loading="lazy" />
-                  <img src="/badges/sa-associate.png" alt="AWS Certified Solutions Architect – Associate" width={64} height={64} className="h-16 w-16" loading="lazy" />
+                  <img src="/badges/genai-dev-pro.png" alt="AWS Certified Generative AI Developer Professional" width={64} height={64} className="h-16 w-16" loading="lazy" />
+                  <img src="/badges/sa-associate.png" alt="AWS Certified Solutions Architect Associate" width={64} height={64} className="h-16 w-16" loading="lazy" />
                 </div>
               ) : (
                 <div className="flex items-baseline gap-2">

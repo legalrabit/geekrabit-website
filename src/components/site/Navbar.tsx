@@ -57,7 +57,7 @@ export function Navbar() {
             Start a project
           </a>
         </div>
-        <span className="sr-only">{site.brand} — {site.tagline}</span>
+        <span className="sr-only">{site.brand}: {site.tagline}</span>
       </div>
     </header>
   );

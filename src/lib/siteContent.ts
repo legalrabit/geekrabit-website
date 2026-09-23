@@ -21,7 +21,7 @@ export const nav = [
 
 export const trustFacts = [
   { value: 2022, unit: "established", label: "GeekRabit Private Limited, registered in India. Fixed-scope contracts, invoices in USD, GBP, EUR and INR." },
-  { kind: "badges", label: "AWS-certified engineering: Generative AI Developer – Professional and Solutions Architect – Associate." },
+  { kind: "badges", label: "AWS-certified engineering: Generative AI Developer Professional and Solutions Architect Associate." },
   { value: 0.05, prefix: "~₹", decimals: 2, unit: "per message", label: "measured LLM cost per customer message with prompt caching, in production testing." },
   { value: 3, unit: "time zones", label: "daily overlap with IST, CET and EST teams. Async-first, written updates, no timezone excuses." },
 ];
@@ -75,7 +75,7 @@ export const services = [
 
 export const caseStudy = {
   eyebrow: "PROOF OF WORK",
-  title: "Thiya — a commerce platform for recurring local services, built end to end.",
+  title: "Thiya: a commerce platform for recurring local services, built end to end.",
   paragraphs: [
     "Water, milk, tiffin and laundry vendors run hundreds of daily deliveries and monthly accounts on paper and WhatsApp. Thiya gives them a business app for subscriptions, daily delivery runs, worker assignment, invoices with UPI payment links and deposit tracking.",
     "The customer side is WhatsApp. A message like 'kal dudh nahi bhejna' (Hindi for 'don't send milk tomorrow') goes through an LLM layer that extracts the intent, confirms it back to the customer, and only then updates the vendor's orders. Mixed Hindi and English, non-technical users, real money. Accuracy is tracked against a 48-case evaluation set, not assumed.",
@@ -108,7 +108,7 @@ export const process = [
   {
     step: "03",
     title: "Ship",
-    week: "Weeks 2–5",
+    week: "Weeks 2 to 5",
     body: "Build out. Daily Loom updates, weekly demo, you can pull the trigger to deploy any time.",
   },
   {
@@ -197,7 +197,7 @@ export const founder = {
   name: "Abhash Shrivastava",
   initials: "AS",
   note:
-    "I spent 12+ years building backend systems for global banks, payment processors and trading platforms before starting GeekRabit. AWS Certified Generative AI Developer – Professional and Solutions Architect – Associate. We're small and we ship. If you want a deck and a six-month timeline, we're not the right fit. If you want a thing that runs in production, let's talk.",
+    "I spent 12+ years building backend systems for global banks, payment processors and trading platforms before starting GeekRabit. AWS Certified Generative AI Developer Professional and Solutions Architect Associate. We're small and we ship. If you want a deck and a six-month timeline, we're not the right fit. If you want a thing that runs in production, let's talk.",
 };
 
 export const company = {
