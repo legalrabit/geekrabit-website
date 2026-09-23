@@ -1,7 +1,6 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { caseStudy } from "@/lib/siteContent";
-import { WhatsAppMockup } from "./WhatsAppMockup";
 
 function StatCountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -42,12 +41,18 @@ function ScreenStack() {
         delay={0.1}
         title="WhatsApp · live intent demo"
       >
-        {/* the real animated phone, scaled to fit the card */}
-        <div className="relative h-[370px] overflow-hidden">
-          <div className="absolute left-1/2 top-1 w-[360px] origin-top -translate-x-1/2" style={{ transform: "translateX(-50%) scale(0.49)" }}>
-            <WhatsAppMockup />
-          </div>
-        </div>
+        {/* real iPhone recording: customer message in, LLM confirmation back */}
+        <video
+          src="/thiya-whatsapp.mp4"
+          poster="/thiya-whatsapp-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="WhatsApp conversation with Thiya: a customer order message and the confirmation reply, screen recording"
+          className="h-[370px] w-full object-cover object-top"
+        />
       </MockCard>
 
 
