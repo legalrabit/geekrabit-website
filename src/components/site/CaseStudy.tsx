@@ -82,7 +82,7 @@ function ClipCard({ clip, index }: { clip: (typeof CLIPS)[number]; index: number
           <span className="font-mono text-[10px] text-muted-foreground">{clip.kicker.split(" · ")[1]}</span>
         </div>
         {"pending" in clip && clip.pending ? (
-          <div className="grid aspect-[9/17.5] w-full place-items-center bg-surface/60 px-4 text-center font-mono text-[11px] text-muted-foreground">
+          <div className="grid aspect-[360/710] w-full place-items-center bg-surface/60 px-4 text-center font-mono text-[11px] text-muted-foreground">
             recording in progress
           </div>
         ) : (
@@ -95,7 +95,7 @@ function ClipCard({ clip, index }: { clip: (typeof CLIPS)[number]; index: number
             playsInline
             preload="metadata"
             aria-label={clip.alt}
-            className="aspect-[9/17.5] w-full object-cover object-top"
+            className="aspect-[360/710] w-full object-cover object-top"
           />
         )}
       </div>
